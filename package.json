@@ -1,0 +1,27 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "async": "^0.9.0",
+    "express": "^4.11.2",
+    "gulp": "^3.8.11",
+    "gulp-react": "^2.0.0",
+    "moment": "^2.9.0",
+    "request": "^2.53.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jmwoo/react.git"
+  },
+  "author": "jmwoo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmwoo/react/issues"
+  },
+  "homepage": "https://github.com/jmwoo/react"
+}
