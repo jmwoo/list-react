@@ -1,41 +1,30 @@
-var lists = [];
+var list = [];
 
-var List = React.createClass({
+var ListItem = React.createClass({
   render: function () {
     return (
-      <li className="list">
-        <p>{this.props.list.id}</p>
+      <li className="list-item">
+        <p>{this.props.listItem.id}</p>
       </li>
     );
   }
 });
 
-var Lists = React.createClass({
+var List = React.createClass({
   render: function () {
     return (
-      <ol className="lists">
-        {this.props.lists.map(function (list) {
-          return <List list={list} />;
+      <ol className="list">
+        {this.props.list.map(function (listItem) {
+          return <ListItem listItem={listItem} />;
         })}
       </ol>
     );
   }
 });
 
-var sortByDateDesc = function (a, b) {
-  var aTim = new Date(a.now).getTime();
-  var bTim = new Date(b.now).getTime();
-
-  if (aTim === bTim) {
-    return a.com.toString().toLowerCase() < b.com.toString().toLowerCase() ? -1 : 1;
-  } else {
-    return bTim - aTim;
-  }
-}
-
 var get = function () {
-    $.get('/lists', function (lists) {
-      React.render(<Lists lists={lists} />, document.getElementById('root'));
+    $.get('/list', function (list) {
+      React.render(<List list={list} />, document.getElementById('root'));
     });
   };
 

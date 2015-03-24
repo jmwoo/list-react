@@ -1,41 +1,30 @@
-var lists = [];
+var list = [];
 
-var List = React.createClass({displayName: "List",
+var ListItem = React.createClass({displayName: "ListItem",
   render: function () {
     return (
-      React.createElement("li", {className: "list"}, 
-        React.createElement("p", null, this.props.list.id)
+      React.createElement("li", {className: "list-item"}, 
+        React.createElement("p", null, this.props.listItem.id)
       )
     );
   }
 });
 
-var Lists = React.createClass({displayName: "Lists",
+var List = React.createClass({displayName: "List",
   render: function () {
     return (
-      React.createElement("ol", {className: "lists"}, 
-        this.props.lists.map(function (list) {
-          return React.createElement(List, {list: list});
+      React.createElement("ol", {className: "list"}, 
+        this.props.list.map(function (listItem) {
+          return React.createElement(ListItem, {listItem: listItem});
         })
       )
     );
   }
 });
 
-var sortByDateDesc = function (a, b) {
-  var aTim = new Date(a.now).getTime();
-  var bTim = new Date(b.now).getTime();
-
-  if (aTim === bTim) {
-    return a.com.toString().toLowerCase() < b.com.toString().toLowerCase() ? -1 : 1;
-  } else {
-    return bTim - aTim;
-  }
-}
-
 var get = function () {
-    $.get('/lists', function (lists) {
-      React.render(React.createElement(Lists, {lists: lists}), document.getElementById('root'));
+    $.get('/list', function (list) {
+      React.render(React.createElement(List, {list: list}), document.getElementById('root'));
     });
   };
 
