@@ -14,20 +14,24 @@ app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // app logic
-var list = Immutable.List();
+var data = {};
 
-var range = Immutable.Range(0, 100).toJS();
-
-list = range.map(function (i) {
+data.list = Immutable.Range(0, 100).map(function (i) {
   return {
     id: i,
     uid: uuid.v4()
-  }
-});
+  };
+}).toJS();
+
+data.appName = 'list-react';
 
 // routes
 app.get('/list', function (req, res) {
-  res.json(list);
+  res.json(data.list);
+});
+
+app.get('/data', function (req, res) {
+  res.json(data);
 });
 
 app.listen(port);
