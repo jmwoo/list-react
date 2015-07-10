@@ -2,9 +2,11 @@ var list = [];
 
 var ListItem = React.createClass({
   render: function () {
+    var li = this.props.li;
     return (
       <li className="list-item">
-        <p>{this.props.listItem.id}</p>
+        <p>{li.id}</p>
+        <p>{li.uid}</p>
       </li>
     );
   }
@@ -14,8 +16,8 @@ var List = React.createClass({
   render: function () {
     return (
       <ol className="list">
-        {this.props.list.map(function (listItem) {
-          return <ListItem listItem={listItem} />;
+        {this.props.list.map(function (li) {
+          return <ListItem li={li} key={li.id} />;
         })}
       </ol>
     );
@@ -30,5 +32,5 @@ var get = function () {
 
 $(function () {
   get();
-  setInterval(get, 1000 * 5);
+  // setInterval(get, 1000 * 5);
 });
