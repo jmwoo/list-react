@@ -1,5 +1,3 @@
-var list = [];
-
 var ListItem = React.createClass({displayName: "ListItem",
   render: function () {
     var li = this.props.li;
@@ -25,8 +23,8 @@ var List = React.createClass({displayName: "List",
 });
 
 var get = function () {
-    $.get('/list', function (list) {
-      React.render(React.createElement(List, {list: list}), document.getElementById('root'));
+    $.get('/data', function (data) {
+      React.render(React.createElement(List, {list: data.list}), document.getElementById('root'));
     });
   };
 
